@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "فرم دریافت تاریخ شمسی";
+}
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Receipt.LastPayment"></label>
+        <input asp-for="Receipt.LastPayment" type="text" id="shamsiDate" data-name="dtp1-text" class="form-control" />
+        <input type="hidden" data-name="dtp1-date" name="Receipt.LastPayment" />
+        <span asp-validation-for="Receipt.LastPayment" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">ارسال</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/md.bootstrappersiandatetimepicker/dist/mds.bs.datetimepicker.js"></script>
+    <script>
+        const dtp1Instance = new mds.MdsPersianDateTimePicker(document.getElementById("shamsiDate"), {
+            targetTextSelector: '[data-name="dtp1-text"]',
+            targetDateSelector: '[data-name="dtp1-date"]'
+        });
+    </script>
+}
